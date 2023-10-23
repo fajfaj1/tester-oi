@@ -1,0 +1,90 @@
+ocen.bat
+---------------------------------
+(c) 2003, Olimpiada Informatyczna
+
+SPOSOB UZYCIA:
+
+Umiesc plik wykonywalny z rozwiazaniem swojego zadania w katalogu
+zawierjacym ocen.bat.
+
+ocen.bat ID
+    gdzie ID jest identyfikatorem zadania
+
+  Ocenienie rozwiazania zadania ID na podstawie wszystkich
+  testow zawartych w zestawie.
+  (gdzie ID oznacza trzyliterowy identyfikator zadania)
+
+  Przyklad:
+     ocen.bat szp
+
+-
+
+ocen.bat ID NR
+    gdzie ID jest identyfikatorem zadania
+          NR jest numerem testu
+
+  Ocenienie rozwiazania zadania ID na podstawie testu o numerze NR
+
+  Przyklad:
+     ocen.bat szp 1
+
+-
+
+DO CZEGO SLUZY SKRYPT:
+- wstepnego sprawdzenia poprawnosci formalnej rozwiazan
+  (np. poprawnego wczytywania danych i wypisywania
+  wynikow)
+- moze byc pomocny przy testowaniu wlasnych rozwiazan,
+  jednak wymaga to opracowania wlasnych zestawow testow i
+  naniesienia odpowiednich zmian w ocen.bat
+
+UWAGI:
+- Twoj program powinien dzialac i konczyc dzialanie bez jakiejkolwiek
+  interakcji uzytkownikiem (wprowadzanie danych, nacisniecie klawisza,
+  dotkniecie myszy etc.).  Sprawdz czy w wysylanym rozwiazaniu nie umiesciles
+  ReadKey, ReadLn, getchar, scanf, ktorych zadaniem jest oczekiwanie na
+  potwierdzenie zakonczenia programu przez uzytkownika.
+
+  Pamietaj jesli Twoj program wymaga interakcji uzytkownika, to przy
+  ostatecznym sprawdzeniu moze okazac sie, ze Twoj program dostanie 0 pkt z
+  powodu przekroczenia limitu czasu (rozwiazania testowane sa mechanicznie!!!).
+
+- program CMP.EXE jest bardzo uproszczony, stad jesli Twoje odpowiedzi
+  nie spelniaja dokladnie skladni podanej w tresci zadania, moga
+  zostac uznane za niepoprawne.
+
+- w niektorych zadaniach dopuszczalne jest wiele poprawnych odpowiedzi,
+  w takim wypadku musisz napisac wlasny program weryfikujacy poprawnosc
+  odpowiedzi,
+
+JAK PISAC WLASNE PROGRAMY DO WERYFIKACJI ODPOWIEDZI:
+
+Niektore zadania dopuszczaja wiele poprawnych odpowiedzi, w takim
+przypadku program cmp.exe moze okazac sie niewystarczajacy.
+Mozesz napisac wlasny program weryfikujacy poprawnosc odpowiedzi,
+musi on jednak spelniac nastepujace zalozenia:
+- powinien nazywac sie IDchk.exe, gdzie ID to trzyliterowy
+  identyfikator zadania, i znajdowac sie w katalogu BIN\
+  (tym samym w ktorym znajduje sie CMP.EXE)
+- w przypadku poprawnej odpowiedzi powinien zwracac kod bledu = 0
+  (np. przez f-je Halt(0) w Pascalu, i return 0 w C/C++),
+  jesli odpowiedz nie jest poprawna powinien zwracac kod bledu rozny od 0
+- program sprawdzajacy moze zakladac, ze
+   a) zostanie uruchomiony w katalogu zawierjacym pliki ID.in, ID.out
+   b) jego pierwszy parametr bedzie zawieral nazwe pliku z odpowiedzia
+      wygenerowana przez testowany program
+   c) drugi parametr bedzie zawieral nazwe pliku z prawidlowa odpowiedzia
+      (lub plikiem ulatwiajacym weryfikacje), zazwyczaj bedzie to
+      OUT\ID?.out, gdzie ? oznacza numer testu
+   d) trzeci parametr zawiera nazwe pliku z danymi wejsciowymi
+
+DO CZEGO NIE SLUZY SKRYPT:
+- ostatecznej oceny rozwiazania!
+
+--
+Wiecej informacji na temat Olimpiady mozna znalezc pod adresami:
+  http://www.oi.edu.pl/
+
+Wszelkie uwagi na temat tego pakietu prosimy zglaszac pod adres:
+Systemie Internetowym Olimpiady w dziale Pytania
+  http://sio2.mimuw.edu.pl/
