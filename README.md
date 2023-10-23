@@ -18,5 +18,9 @@ Przy każdym teście wyświetli się także zużycie pamięci przez twoje rozwi�
 ### Konfiguracja
 W pliku `config.py` możesz doprecyzować komendę startującą skrypt rozwiązani (domyślnie `py`)
 
+## Ocen
+Ten skrypt działa w oparciu o niezmodyfikowane archiwum `/ocen` (dostępne w sekcji Pliki i Testy w SIO). W razie aktualizacji tego pliku, lub chęci użycia innego składu testu, możesz śmiało podmienić ten folder na nowy.
+
+
 ## Błędy i Propozycje
 Jeśli natrafisz na jakiś błąd, lub przyjdzie ci do głowy jakieś ulepszenie, zachęcam do pisania w [Issues](https://github.com/fajfaj1/tester-oi/issues) i wysyłania swoich [Pull requests](https://github.com/fajfaj1/tester-oi/pulls).
