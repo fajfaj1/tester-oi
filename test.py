@@ -1,4 +1,4 @@
-import sys, re, configparser, pathlib, os, subprocess, psutil
+import sys, re, configparser, pathlib, os, subprocess, psutil, time
 from colorama import Fore, Back, Style
 
 def log(message, type = 'log'):
@@ -120,17 +120,32 @@ def doTest(testname):
     command = config['command'].replace('[FILE]', f'"{solution}"')
 
     # Run solution
+    startTime = time.time()
     process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+    process.stdin.write(files['in'])
+
+
+    # Get memory usage
     pid = process.pid
     subprocess_process = psutil.Process(pid)
-    memory_used = str(int(subprocess_process.memory_info().rss / 1024 / 1024)) + "MB"
+    memory_used = subprocess_process.memory_info().rss
+    process.stdin.close() 
+    while(process.poll() is None):
+        try:
+            memory_used = subprocess_process.memory_info().rss
+            time.sleep(0.02)
+        except:
+            break;
+    memory_used = str(round(memory_used / 1024 / 1024)) + "MB"
 
-    stdout, stderr = process.communicate(input=files['in'])
-
-
+    # Get output
+    stdout, stderr = process.communicate()
+    duration = round(time.time() - startTime, 2)
+    duration = str(duration) + "s"
     # Verify output
     report = {}
-    memory = Fore.LIGHTBLACK_EX + f"  (Mem: {memory_used})" + Fore.RESET
+    memory = Fore.LIGHTBLACK_EX + f"  (Mem: {memory_used}, Time: {duration})" + Fore.RESET
     indent = Back.LIGHTBLACK_EX + " " + Back.RESET + "  "
     if(stderr != ''):
         report['status'] = 'error'

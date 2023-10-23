@@ -2,7 +2,7 @@
 Szybko i wygodnie przetestuje swoje rozwiązania do olimpiady informatycznej w pythonie.
 
 ## Użycie
-1. Sklonuj to repozytorium, lub pobierz i rozpakuj [archiwum](https://github.com/fajfaj1/tester-oi/archive/refs/heads/main.zip).
+1. Sklonuj to repozytorium, lub pobierz i rozpakuj [archiwum najnowszej wersji](https://github.com/fajfaj1/tester-oi/releases).
 2. W folderze 'rozwiazania' umieść swoje rozwiązania (nazwy plików powinny być takie jak w kryteriach zadani).
 3. Uruchom skrypt `test.py` (testowany na wersji Pythona 3.11.0)
 > ```bash
@@ -14,6 +14,9 @@ Wyniki testów powinny zostać wyświetlone w następujący sposób:
 
 ### Zużycie pamięci
 Przy każdym teście wyświetli się także zużycie pamięci przez twoje rozwiązanie (w MegaBajtach). Jest on kalkulowany przy użyciu biblioteki [psutil](https://pypi.org/project/psutil/) i nie ręczę za jego poprawność. 
+
+### Pomiar czasu
+Czas wykonywania każdego testu ma tylko charakter orientacyjny. Jest mierzony najprostszą możliwą metodą, która nie pokrywa się ze sposobem mierzenia czasu w SIO.
 
 ### Konfiguracja
 W pliku `config.py` możesz doprecyzować komendę startującą skrypt rozwiązani (domyślnie `py`)
