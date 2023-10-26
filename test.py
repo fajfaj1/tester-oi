@@ -157,7 +157,7 @@ def doTest(testname):
         report['message'] = f'Test {test} errored: {memory}\n' + Fore.RESET + error + "\n"
     elif stdout == files['out']:
         report['status'] = 'ok'
-        report['message'] = f'Test {testname} passed\n'
+        report['message'] = f'Test {testname} passed {memory}\n'
     else:
         report['status'] = 'fail'
         received = Fore.WHITE + stdout + Fore.RED
